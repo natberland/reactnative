@@ -43,7 +43,7 @@ export default class ListaF1 extends React.Component {
       for (let i = 0; i < qtdItems; i++) {
         const key = 'indice' + i;
         elements.push(
-          <Card key={key} >
+          <Card key={key}  >
             <CardItem >
               <Text>Rodada: {data[i].round}, </Text>
               <Text>{data[i].raceName}, </Text>
