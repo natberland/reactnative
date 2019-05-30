@@ -1,57 +1,79 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Container, Header, Content, List, ListItem } from 'native-base';
+import { Container, Header, Content, List, ListItem, Card, CardItem, CardSwiper } from 'native-base';
 
 import { SafeAreaView } from 'react-navigation';
 
 export default class ListaF1 extends React.Component {
-  
-    state = {
-        loading : true,
-        data: [],
-    };
-  
-    static navigationOptions = () => {
-        return {
-            title: 'Temporadas',
-        };
-    }
 
-  componentDidMount() {
-      const season = this.props.navigation.getParam('season');
-      this.getData(season);
+  state = {
+
+    data: [],
+  };
+
+  static navigationOptions = () => {
+    return {
+      title: 'Temporadas',
+    };
   }
 
-  getData(seasons) {
-    fetch(`http://ergast.com/api/f1/${seasons}.json`)
+  componentDidMount() {
+    const season = this.props.navigation.getParam('season');
+    this.getData(season);
+  }
+
+  getData(season) {
+    fetch(`http://ergast.com/api/f1/${season}.json`)
       .then((response) => response.json())
       .then((data) => {
         this.setState({ data: data.MRData.RaceTable.Races });
       });
   }
-  
 
   render() {
-    return (
-      <SafeAreaView style={styles.container}>
-        <Container>
-        <Header />
-        <Content>
+    const data = this.state.data;
+    const loading = this.state.loading;
+    if (loading === true) {
+      return (<Spinner color='red' />)
+    } else {
+
+      let elements = [];
+      const qtdItems = data.length;
+
+      for (let i = 0; i < qtdItems; i++) {
+        const key = 'indice' + i;
+        elements.push(
+          <Card key={key} >
+            <CardItem >
+              <Text>Rodada: {data[i].round}, </Text>
+              <Text>{data[i].raceName}, </Text>
+
+            </CardItem>
+            <CardItem>
+              <Text>Data: {data[i].date} </Text>
+
+            </CardItem>
+            <CardItem>
+              <Text>{data[i].Circuit.Location.country} - </Text>
+              <Text>{data[i].Circuit.Location.locality}</Text>
+
+            </CardItem>
+
+
+
+          </Card>
+        );
+      }
+
+
+      return (
+        <SafeAreaView style={styles.container}>
           <List>
-            <ListItem>
-              <Text>oi</Text>
-            </ListItem>
-            <ListItem>
-              <Text>Nathaniel Clyne</Text>
-            </ListItem>
-            <ListItem>
-              <Text>Dejan Lovren</Text>
-            </ListItem>
+            {elements}
           </List>
-        </Content>
-      </Container>
-      </SafeAreaView>
-    );
+        </SafeAreaView>
+      );
+    }
   }
 }
 
@@ -61,5 +83,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+
   },
+
+  Card: {
+    backgroundColor: '#FF4500',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: '#00FFFF'
+
+  }
+
 });

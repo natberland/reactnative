@@ -18,12 +18,10 @@ export default class Home extends React.Component {
         };
     }
 
-    getData(pages) {
+    getData(season) {
         this.props.navigation.navigate('ListaF1', {
-            pages: pages,
-            name: 'Nathalie Berland',
+            season: season,
         });
-
     }
 
 

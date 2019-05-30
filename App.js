@@ -17,8 +17,16 @@ const AppNavigator = createStackNavigator(
 
     ListaF1: {
       screen: ListaF1,
+    },
+
+    Navegacao: {
+      screen: Navegacao,
     }
+
+
+
   },
+
 
   {
     initiaRouterName: 'ListaF1',
