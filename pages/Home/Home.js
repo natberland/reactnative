@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 import Seasons from '../../components/Seasons';
-import { SafeAreaView } from 'react-navigation'
+import { SafeAreaView } from 'react-native'
 
 export default class Home extends React.Component {
 
@@ -18,12 +18,14 @@ export default class Home extends React.Component {
         };
     }
 
-    getData(season) {
-        this.props.navigation.navigate('ListaF1', {
-            season: season,
-        });
-    }
+    
+  getData(year) {
+    this.props.navigation.navigate('Categories', {
+      year
+    });
+  }
 
+   
 
     render() {
         return (

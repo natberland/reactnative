@@ -13,7 +13,7 @@ export default class ListaF1 extends React.Component {
 
   static navigationOptions = () => {
     return {
-      title: 'Temporadas',
+      title: 'Seasons',
     };
   }
 
@@ -45,12 +45,12 @@ export default class ListaF1 extends React.Component {
         elements.push(
           <Card key={key}  >
             <CardItem >
-              <Text>Rodada: {data[i].round}, </Text>
+              <Text>Season: {data[i].round}, </Text>
               <Text>{data[i].raceName}, </Text>
 
             </CardItem>
             <CardItem>
-              <Text>Data: {data[i].date} </Text>
+              <Text>Date: {data[i].date} </Text>
 
             </CardItem>
             <CardItem>

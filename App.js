@@ -5,40 +5,59 @@ import {
   createAppContainer,
 } from 'react-navigation';
 
-import HomeScreen from './pages/Home/Home';
+
+import Home from './pages/Home/Home';
 import ListaF1 from './pages/ListaF1/ListaF1';
+import Races from './pages/Races/races';
+import Race from './pages/Race/race';
+import Drivers from './pages/Drivers'
+import Driver from './pages/Driver/Driver';
+import Categories from './components/Categories'
 
 
 const AppNavigator = createStackNavigator(
   {
     Home: {
-    screen: HomeScreen,
+      screen: Home,
     },
 
     ListaF1: {
       screen: ListaF1,
     },
 
-    Navegacao: {
-      screen: Navegacao,
+    Races: {
+      screen: Races,
+    },
+
+    Race: {
+      screen: Race,
+    },
+
+    Driver: {
+      screen: Driver,
+    },
+
+    Drivers: {
+      screen: Drivers,
+    },
+    Categories: {
+      screen: Categories
     }
-
-
 
   },
 
 
   {
-    initiaRouterName: 'ListaF1',
-      defaultNavigationOptions: {
-        headerStyle: {
-          backgroundColor: '#FF4500',
-        },
-        headerTintColor: '#ffffff',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
+    initialRouteName: 'Home',
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#000000',
       },
+      headerTintColor: '#ffffff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
   }
 );
 

@@ -13,7 +13,7 @@ class Seasons extends PureComponent {
                 <Button style={style.button}
                     onPress={() => this.props.handleClick(years)}
                     key={`season-${i}`}>
-                    <Text>
+                    <Text style={{textAlign: 'center', textAlignVertical: 'center', width: '100%'}}>
                         20{i > 9 ? i : `0${i}`}
                     </Text>
                 </Button>
